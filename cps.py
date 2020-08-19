@@ -41,6 +41,7 @@ from cps.shelf import shelf
 from cps.admin import admi
 from cps.gdrive import gdrive
 from cps.editbooks import editbook
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 try:
     from cps.kobo import kobo, get_kobo_activated
@@ -58,6 +59,7 @@ except ImportError:
 
 def main():
     app = create_app()
+    app.wsgi_app = ProxyFix(app.wsgi_app)
     app.register_blueprint(web)
     app.register_blueprint(opds)
     app.register_blueprint(jinjia)
