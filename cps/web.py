@@ -1298,6 +1298,9 @@ def register():
                 content.password = generate_password_hash(password)
                 content.role = config.config_default_role
                 content.sidebar_view = config.config_default_show
+                content.allowed_tags = config.config_allowed_tags
+                content.denied_tags = config.config_denied_tags
+
                 try:
                     ub.session.add(content)
                     ub.session.commit()
