@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec git diff 0.6.8 fppl --binary
