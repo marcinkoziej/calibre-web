@@ -123,7 +123,8 @@ a, .danger,.book-remove, .editable-empty, .editable-empty:hover { color: #880000
     color: white;
 }
 
-button.btn-primary, a.btn-primary {
+button.btn-primary, a.btn-primary,
+button.btn-primary:focus, button.btn-primary:active {
     border-radius: 0px;
     border-width: 0px;
     border-bottom: 5px solid #B80000;
