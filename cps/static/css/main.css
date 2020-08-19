@@ -11,7 +11,7 @@
 }
 
 body {
-  background: #4e4e4e;
+  background: #fff;
   overflow: hidden;
 }
 
@@ -38,7 +38,7 @@ body {
   padding: 10px;
   /* margin: 0 50px 0 50px; */
   position: relative;
-  color: #4f4f4f;
+  color: #fff;
   font-weight: 100;
   font-family: Georgia, "Times New Roman", Times, serif;
   opacity: 0.5;
