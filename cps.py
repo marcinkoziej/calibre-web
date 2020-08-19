@@ -43,6 +43,7 @@ from cps.gdrive import gdrive
 from cps.editbooks import editbook
 from cps.remotelogin import remotelogin
 from cps.error_handler import init_errorhandler
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 try:
     from cps.kobo import kobo, get_kobo_activated
@@ -62,6 +63,7 @@ def main():
     app = create_app()
 
     init_errorhandler()
+    app.wsgi_app = ProxyFix(app.wsgi_app)
 
     app.register_blueprint(web)
     app.register_blueprint(opds)
