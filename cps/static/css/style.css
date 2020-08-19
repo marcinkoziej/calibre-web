@@ -107,7 +107,7 @@ a { color: #B80000; }
     color: white;
 }
 
-a.btn-primary {
+button.btn-primary, a.btn-primary {
     border-radius: 0px;
     border-width: 0px;
     border-bottom: 5px solid #B80000;
@@ -115,7 +115,8 @@ a.btn-primary {
     color: black;
     font-weight: bold;
 }
-a.btn-primary:hover {
+
+button.btn-primary:hover, a.btn-primary:hover {
     color: white;
     background-color: #B80000;
     border-bottom: 5px solid #B80000;
