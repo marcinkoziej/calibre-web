@@ -37,6 +37,8 @@ from . import constants, logger, config, app, ub
 
 from .oauth import OAuthBackend, backend_resultcode
 
+from oauthlib.oauth2.rfc6749.errors import TokenExpiredError, InvalidGrantError
+
 
 oauth_check = {}
 oauth = Blueprint('oauth', __name__)
@@ -318,12 +320,15 @@ if ub.oauth_support:
     def google_login():
         if not google.authorized:
             return redirect(url_for("google.login"))
-        resp = google.get("/oauth2/v2/userinfo")
-        if resp.ok:
-            account_info_json = resp.json()
-            return bind_oauth_or_register(oauthblueprints[1]['id'], account_info_json['id'], 'google.login', 'google')
-        flash(_(u"Google Oauth error, please retry later."), category="error")
-        return redirect(url_for('web.login'))
+        try:
+            resp = google.get("/oauth2/v2/userinfo")
+            if resp.ok:
+                account_info_json = resp.json()
+                return bind_oauth_or_register(oauthblueprints[1]['id'], account_info_json['id'], 'google.login', 'google')
+            flash(_(u"Google Oauth error, please retry later."), category="error")
+            return redirect(url_for('web.login'))
+        except (InvalidGrantError, TokenExpiredError) as e:  # or maybe any OAuth2Error
+            return redirect(url_for("google.login"))
 
 
     @oauth_error.connect_via(oauthblueprints[1]['blueprint'])
