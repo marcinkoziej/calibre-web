@@ -123,7 +123,7 @@ def send_registration_mail(e_mail, user_name, default_password, resend=False):
                            e_mail=e_mail)
 
     WorkerThread.add(None, TaskEmail(
-        subject=_('Witaj w bibliotece FPPL'),
+        subject=_('Dostęp do biblioteki FPPL'),
         filepath=None,
         attachment=None,
         settings=config.get_mail_settings(),
