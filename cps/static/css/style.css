@@ -219,6 +219,10 @@ button.btn-primary:hover, a.btn-primary:hover {
   padding: 1px 0px 1px 26px;
 }
 
+.navbar-brand img {
+    height: 48px;
+}
+
 .more-stuff {
   margin-top: 20px;
   padding-top: 20px;

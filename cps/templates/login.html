@@ -1,6 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
-<div class="well col-sm-6 col-sm-offset-2">
+    <div class="col-sm-offset-2 col-sm-6">
+      <h1>
+        Biblioteka
+      </h1>
+      <h2>
+        Forum Polskie Pola Lacanowskiego
+      </h2>
+    </div>
+    <div class="col-sm-4 hidden-xs">
+      <img src="/static/img/fppl_logo_480.png" style="height: 200px"/>
+    </div>
+
+<div class="xwell col-sm-6 col-sm-offset-2">
   <h2 style="margin-top: 0">{{_('Login')}}</h2>
   <form method="POST" role="form">
     <input type="hidden" name="next" value="{{next_url}}">
