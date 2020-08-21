@@ -126,7 +126,7 @@ def send_registration_mail(e_mail, user_name, default_password, resend=False):
                            resent=resend,
                            e_mail=e_mail)
 
-    worker.add_email(_('Witaj w bibliotece FPPL'), None, None,
+    worker.add_email(_('Dostęp do biblioteki FPPL'), None, None,
                      config.get_mail_settings(), e_mail, None,
                      _(u"E-mail rejestracyjny dla użytkownika: %(name)s", name=user_name), text)
     return
