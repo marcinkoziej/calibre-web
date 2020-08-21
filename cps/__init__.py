@@ -134,7 +134,11 @@ def get_locale():
             except (UnknownLocaleError, ValueError) as e:
                 log.debug('Could not parse locale "%s": %s', x, e)
 
-    return negotiate_locale(preferred or ['en'], _BABEL_TRANSLATIONS)
+    if preferred and 'pl' in preferred:
+        preferred.remove('pl')
+        preferred.insert(0, 'pl')
+
+    return negotiate_locale(preferred or ['pl'], _BABEL_TRANSLATIONS)
 
 
 @babel.timezoneselector
