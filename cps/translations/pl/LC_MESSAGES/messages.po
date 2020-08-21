@@ -1156,7 +1156,7 @@ msgstr "Hasło"
 
 #: cps/templates/admin.html:18 cps/templates/layout.html:66
 msgid "Upload"
-msgstr "Wysyłanie"
+msgstr "Dodaj tekst"
 
 # ???
 #: cps/templates/admin.html:19 cps/templates/detail.html:18
