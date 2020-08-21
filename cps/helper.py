@@ -33,7 +33,7 @@ from tempfile import gettempdir
 import requests
 from babel.dates import format_datetime
 from babel.units import format_unit
-from flask import send_from_directory, make_response, redirect, abort
+from flask import send_from_directory, make_response, redirect, abort, render_template
 from flask_babel import gettext as _
 from flask_login import current_user
 from sqlalchemy.sql.expression import true, false, and_, or_, text, func
@@ -120,18 +120,15 @@ def send_test_mail(kindle_mail, user_name):
 
 # Send registration email or password reset email, depending on parameter resend (False means welcome email)
 def send_registration_mail(e_mail, user_name, default_password, resend=False):
-    text = "Hello %s!\r\n" % user_name
-    if not resend:
-        text += "Your new account at Calibre-Web has been created. Thanks for joining us!\r\n"
-    text += "Please log in to your account using the following informations:\r\n"
-    text += "User name: %s\r\n" % user_name
-    text += "Password: %s\r\n" % default_password
-    text += "Don't forget to change your password after first login.\r\n"
-    text += "Sincerely\r\n\r\n"
-    text += "Your Calibre-Web team"
-    worker.add_email(_(u'Get Started with Calibre-Web'), None, None,
+    text = render_template("registration_mail.txt",
+                           user_name=user_name,
+                           password=default_password,
+                           resent=resend,
+                           e_mail=e_mail)
+
+    worker.add_email(_('Witaj w bibliotece FPPL'), None, None,
                      config.get_mail_settings(), e_mail, None,
-                     _(u"Registration e-mail for user: %(name)s", name=user_name), text)
+                     _(u"E-mail rejestracyjny dla użytkownika: %(name)s", name=user_name), text)
     return
 
 
