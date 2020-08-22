@@ -146,8 +146,8 @@ button.btn-primary:hover, a.btn-primary:hover {
   bottom: 0;
   position: absolute;
   -webkit-box-shadow: 0 5px 8px -6px #777;
-  -moz-box-shadow: 0 5px 8px -6px #777;
-  box-shadow: 0 5px 8px -6px #777;
+  -moz-box-shadow: 0 5px 8px 0px #777;
+  box-shadow: 0 5px 8px 0px #777;
 }
 
 .container-fluid .book .meta { margin-top: 10px; }
@@ -201,8 +201,8 @@ span.glyphicon.glyphicon-tags {
   border: 1px solid #fff;
   box-sizing: border-box;
   -webkit-box-shadow: 0 5px 8px -6px #777;
-  -moz-box-shadow: 0 5px 8px -6px #777;
-  box-shadow: 0 5px 8px -6px #777;
+  -moz-box-shadow: 0 5px 8px 0px #777;
+  box-shadow: 0 5px 8px 0px #777;
 }
 
 .navbar-default .navbar-toggle .icon-bar {background-color: #000; }
