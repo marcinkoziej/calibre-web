@@ -2431,7 +2431,7 @@ msgstr "Ocena mniejsza niż"
 
 #: cps/templates/shelf.html:10
 msgid "Delete this Shelf"
-msgstr "Usuń tą półkę"
+msgstr "Usuń tę półkę"
 
 #: cps/templates/shelf.html:11
 msgid "Edit Shelf"
