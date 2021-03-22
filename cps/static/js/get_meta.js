@@ -74,8 +74,8 @@ $(function () {
             $("#meta-info").html("<ul id=\"book-list\" class=\"media-list\"></ul>");
         }
         if ((ggDone === 3 || (ggDone === 1 && ggResults.length === 0)) &&
-            (dbDone === 3 || (ggDone === 1 && dbResults.length === 0)) &&
-            (cvDone === 3 || (ggDone === 1 && cvResults.length === 0))) {
+            (dbDone === 3 || (dbDone === 1 && dbResults.length === 0)) &&
+            (cvDone === 3 || (cvDone === 1 && cvResults.length === 0))) {
             $("#meta-info").html("<p class=\"text-danger\">" + msg.no_result + "</p>");
             return;
         }
@@ -108,7 +108,7 @@ $(function () {
                         tags: result.volumeInfo.categories || [],
                         rating: result.volumeInfo.averageRating || 0,
                         cover: result.volumeInfo.imageLinks ?
-                            result.volumeInfo.imageLinks.thumbnail : "/static/generic_cover.jpg",
+                            result.volumeInfo.imageLinks.thumbnail : location + "/../../../static/generic_cover.jpg",
                         url: "https://books.google.com/books?id=" + result.id,
                         source: {
                             id: "google",
@@ -138,8 +138,8 @@ $(function () {
                         seriesTitle = result.series.title;
                     }
                     var dateFomers = result.pubdate.split("-");
-                    var publishedYear = parseInt(dateFomers[0]);
-                    var publishedMonth = parseInt(dateFomers[1]);
+                    var publishedYear = parseInt(dateFomers[0], 10);
+                    var publishedMonth = parseInt(dateFomers[1], 10);
                     var publishedDate = new Date(publishedYear, publishedMonth - 1, 1);
 
                     publishedDate = formatDate(publishedDate);
@@ -194,8 +194,8 @@ $(function () {
                     } else {
                         dateFomers = result.date_added.split("-");
                     }
-                    var publishedYear = parseInt(dateFomers[0]);
-                    var publishedMonth = parseInt(dateFomers[1]);
+                    var publishedYear = parseInt(dateFomers[0], 10);
+                    var publishedMonth = parseInt(dateFomers[1], 10);
                     var publishedDate = new Date(publishedYear, publishedMonth - 1, 1);
 
                     publishedDate = formatDate(publishedDate);
@@ -253,7 +253,7 @@ $(function () {
     }
 
     function dbSearchBook (title) {
-        var apikey = "0df993c66c0c636e29ecbb5344252a4a";
+        var apikey = "054022eaeae0b00e0fc068c0c0a2102a";
         $.ajax({
             url: douban + dbSearch + "?apikey=" + apikey + "&q=" + title + "&fields=all&count=10",
             type: "GET",
