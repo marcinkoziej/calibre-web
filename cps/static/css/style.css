@@ -60,12 +60,12 @@ a, .danger,.book-remove, .editable-empty, .editable-empty:hover { color: #880000
 .btn-default a { color: #444; }
 
 .btn-default a:hover {
-    color: #45b29d;
+    color: #880000;
     text-decoration: None;
 }
 
 .btn-default:hover {
-    color: #45b29d;
+    color: #880000;
 }
 
 .editable-click, a.editable-click, a.editable-click:hover  { border-bottom: None; }
@@ -315,9 +315,9 @@ table .bg-primary a {color: #fff; }
 input.pill { position: absolute; opacity: 0; }
 
 input.pill + label {
-  border: 2px solid #45b29d;
+  border: 2px solid #880000;
   border-radius: 15px;
-  color: #45b29d;
+  color: #880000;
   cursor: pointer;
   display: inline-block;
   padding: 3px 15px;
