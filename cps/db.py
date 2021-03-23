@@ -433,7 +433,7 @@ class CalibreDB():
     def __init__(self, expire_on_commit=True):
         """ Initialize a new CalibreDB session
         """
-        self.session = None
+        self._session = None
         if self._init:
             self.initSession(expire_on_commit)
 
@@ -441,9 +441,16 @@ class CalibreDB():
 
 
     def initSession(self, expire_on_commit=True):
-        self.session = self.session_factory()
-        self.session.expire_on_commit = expire_on_commit
+        self._session = self.session_factory()
+        self._session.expire_on_commit = expire_on_commit
         self.update_title_sort(self.config)
+
+    @property
+    def session(self):
+        if not self._session.is_active:
+            self._session.rollback()
+            self.initSession()
+        return self._session
 
     @classmethod
     def setup_db(cls, config, app_db_path):
