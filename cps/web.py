@@ -1182,7 +1182,6 @@ def advanced_search_form():
 
 
 @web.route("/cover/<int:book_id>")
-@login_required_if_no_ano
 def get_cover(book_id):
     return get_book_cover(book_id)
 
