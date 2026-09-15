@@ -1,16 +1,16 @@
 Witaj w bibliotece FPPL!
 
 {% if not resent %}
-Twoje konto zostało zarejestrowane! W tej chwili masz dostęp jedynie do tekstów oznaczonych jako publiczne. Poczekaj, aż opiekun biblioteki doda Cię do odpowiedniej grupy, aby zobaczyć ich więcej. Możesz dołączyć do stowarzyszenia FPPL, aby mieć dostęp do wszystkich tekstów.
+Twoje konto zostało zarejestrowane! Znajdziesz tu teksty, które czytamy w ramach tegorocznego programu FPPL.
 {% endif %}
-Możesz zalogować się do biblioteki na stronie https://teksty.fppl.pl za pomocą:
-nazwy: {{user_name}}
-oraz hasła: {{password}}
 
-Jeżeli zarejestrowałaś_eś się za pomocą adresu Gmail, możesz kliknąć kolorową ikonę G aby zalogować się za pomocą hasła Google (masz wtedy jedno hasło mniej do zapamiętania).
+Zaloguj się do biblioteki na stronie https://teksty.fppl.pl, używając:
+nazwy użytkownika: {{user_name}}
+hasła: {{password}}
 
-Skorzystaj z opcji, aby zmienić hasło lub język interfejsu, klikając w {{user_name}} na górnej belce po prawej.
+Jeśli zarejestrowałaś_eś się za pomocą konta Google, kliknij kolorową ikonę G, aby zalogować się hasłem Google — będziesz mieć wtedy jedno hasło mniej do zapamiętania.
 
+Hasło i język interfejsu możesz zmienić w menu, które otworzysz, klikając {{user_name}} w prawym górnym rogu ekranu.
 
 Miłej lektury,
 
