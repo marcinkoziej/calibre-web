@@ -41,7 +41,7 @@ from sqlalchemy.sql.expression import func, or_
 from . import constants, logger, helper, services
 from .cli import filepicker
 from . import db, calibre_db, ub, web_server, get_locale, config, updater_thread, babel, gdriveutils
-from .helper import check_valid_domain, send_test_mail, reset_password, generate_password_hash
+from .helper import check_valid_domain, send_test_mail, send_registration_mail, reset_password, generate_password_hash
 from .gdriveutils import is_gdrive_ready, gdrive_support
 from .render_template import render_title_template, get_sidebar_config
 from . import debug_info
@@ -1001,7 +1001,13 @@ def _handle_new_user(to_save, content, languages, translations, kobo_support):
         content.denied_column_value = config.config_denied_column_value
         ub.session.add(content)
         ub.session.commit()
-        flash(_(u"User '%(user)s' created", user=content.nickname), category="success")
+        if config.get_mail_server_configured():
+            send_registration_mail(content.email, content.nickname, to_save["password"])
+            flash(_(u"User '%(user)s' created and registration e-mail queued", user=content.nickname),
+                  category="success")
+        else:
+            flash(_(u"User '%(user)s' created. Registration e-mail was not sent because SMTP is not configured",
+                    user=content.nickname), category="warning")
         return redirect(url_for('admin.admin'))
     except IntegrityError:
         ub.session.rollback()
